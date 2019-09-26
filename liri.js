@@ -17,7 +17,10 @@ function song(input) {
     spotify
         .search({ type: 'track', query: input })
         .then(function (response) {
-            console.log(JSON.stringify(response.tracks.items[0], null, 2));
+            console.log(JSON.stringify("Artist: " + response.tracks.items[0].album.artists[0].name, null, 2));
+            console.log(JSON.stringify("Song name: " + response.tracks.items[0].name, null, 2));
+            console.log(JSON.stringify("Album that the song is from: " + response.tracks.items[0].album.name, null, 2));
+            console.log(JSON.stringify("Preview of the song: " + response.tracks.items[0].preview_url, null, 2));
         })
         .catch(function (err) {
             console.log(err);
