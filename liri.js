@@ -11,7 +11,7 @@ var moment = require("moment");
 
 
 var userCall = process.argv[2];
-var userInput = process.argv[3];
+var userInput = process.argv.slice(3).join(" ");
 
 function song(input) {
     spotify
@@ -53,10 +53,10 @@ function movies() {
 }
 
 
-function concert() {
-    axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
+function concert(input) {
+    axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(
         function (response) {
-            console.log("The movie's rating is: " + response.data.imdbRating);
+            console.log(JSON.stringify(response[0], null, 2));
         })
         .catch(function (error) {
             if (error.response) {
