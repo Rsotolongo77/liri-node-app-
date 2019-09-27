@@ -14,6 +14,9 @@ var userCall = process.argv[2];
 var userInput = process.argv.slice(3).join(" ");
 
 function song(input) {
+    if (input == undefined) {
+        input = "The Sign by Ace of Base"
+    }
     spotify
         .search({ type: 'track', query: input })
         .then(function (response) {
@@ -28,10 +31,20 @@ function song(input) {
 
 }
 
-function movies() {
-    axios.get("http://www.omdbapi.com/?t=remember+the+titans&y=&plot=short&apikey=trilogy").then(
+function movies(input) {
+    if (input == undefined) {
+        input = "Mr. Nobody"
+    }
+    axios.get("http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=trilogy").then(
         function (response) {
-            console.log("The movie's rating is: " + response.data.imdbRating);
+            console.log(JSON.stringify("Title: " + response.data.Title));
+            console.log(JSON.stringify("Year Released: " + response.data.Year));
+            console.log(JSON.stringify("IMDB Rating: " + response.data.imdbRating));
+            console.log(JSON.stringify("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value));
+            console.log(JSON.stringify("Country where the movie was produced: " + response.data.Country));
+            console.log(JSON.stringify("Language of the movie: " + response.data.Language));
+            console.log(JSON.stringify("Actors in the movie: " + response.data.Actors));
+            console.log(response.data.Ratings);
         })
         .catch(function (error) {
             if (error.response) {
@@ -59,7 +72,7 @@ function movies() {
 function concert(input) {
     axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(
         function (response) {
-            console.log(JSON.stringify(response[0], null, 2));
+            console.log("The movie's rating is: " + response.data.imdbRating);
         })
         .catch(function (error) {
             if (error.response) {
