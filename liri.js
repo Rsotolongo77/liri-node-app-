@@ -6,9 +6,6 @@ var spotify = new Spotify(keys.spotify);
 var axios = require("axios");
 var moment = require("moment");
 var fs = require("fs");
-
-
-
 var userCall = process.argv[2];
 var userInput = process.argv.slice(3).join(" ");
 
@@ -39,6 +36,7 @@ function movies(input) {
     }
     axios.get("http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=trilogy").then(
         function (response) {
+
             console.log(JSON.stringify("Title: " + response.data.Title));
             console.log(JSON.stringify("Year Released: " + response.data.Year));
             console.log(JSON.stringify("IMDB Rating: " + response.data.imdbRating));
@@ -47,6 +45,7 @@ function movies(input) {
             console.log(JSON.stringify("Language of the movie: " + response.data.Language));
             console.log(JSON.stringify("Actors in the movie: " + response.data.Actors));
             //console.log(response.data.Ratings);
+
         })
         .catch(function (error) {
             if (error.response) {
@@ -70,16 +69,15 @@ function movies(input) {
 
 };
 
-
 function concert(input) {
     axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(
         function (response) {
-            for (let i = 0; i < response.data.length; i++) {
-                console.log("Name of venue: ", response.data[i].venue.name);
-                console.log("Venue location: ", response.data[i].venue.city);
+            for (i = 0; i < response.data.length; i++) {
+                console.log("\nName of venue: \n", response.data[i].venue.name);
+                console.log("\nVenue location: \n", response.data[i].venue.city);
                 //console.log(response.data);
                 var date = (response.data[i].datetime);
-                console.log(moment(date).format("MM/DD/YY hh:mm:ss"));
+                console.log(moment(date).format("\nMM/DD/YY hh:mm:ss\n"));
             }
         })
         .catch(function (error) {
@@ -109,11 +107,21 @@ function random() {
             return console.log(err)
         }
         var dataArr = data.split(",")
-        var userCall1 = dataArr[0];
-        var userCall2 = dataArr[1];
-        (userCall1[0], userCall2[1]);
+        var userCall0 = dataArr[0];
+        var userCall1 = dataArr[1];
 
+        if (userCall0 === "spotify-this-song") {
+            song(userCall1);
+        }
+        if (userCall0 === "movie-this") {
+            movies(userCall1);
+        }
+        if (userCall0 === "concert-this") {
+            concert(userCall1);
+            console.log(userCall0, userCall1);
+        }
     });
+
 }
 
 switch (userCall) {
