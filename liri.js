@@ -3,10 +3,9 @@ require("dotenv").config();
 var keys = require("./keys.js");
 var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
-
 var axios = require("axios");
-
 var moment = require("moment");
+var fs = require("fs");
 
 
 
@@ -20,16 +19,19 @@ function song(input) {
     spotify
         .search({ type: 'track', query: input })
         .then(function (response) {
-            console.log(JSON.stringify("Artist: " + response.tracks.items[0].album.artists[0].name, null, 2));
-            console.log(JSON.stringify("Song name: " + response.tracks.items[0].name, null, 2));
-            console.log(JSON.stringify("Album that the song is from: " + response.tracks.items[0].album.name, null, 2));
-            console.log(JSON.stringify("Preview of the song: " + response.tracks.items[0].preview_url, null, 2));
+            for (i = 0; i < response.tracks.items.length; i++) {
+                console.log(JSON.stringify("Artist: " + response.tracks.items[i].album.artists[0].name, null, 2));
+                console.log(JSON.stringify("Song name: " + response.tracks.items[i].name, null, 2));
+                console.log(JSON.stringify("Album that the song is from: " + response.tracks.items[i].album.name, null, 2));
+                console.log(JSON.stringify("Preview of the song: " + response.tracks.items[i].preview_url, null, 2));
+            }
         })
+
         .catch(function (err) {
             console.log(err);
         });
 
-}
+};
 
 function movies(input) {
     if (input == undefined) {
@@ -44,7 +46,7 @@ function movies(input) {
             console.log(JSON.stringify("Country where the movie was produced: " + response.data.Country));
             console.log(JSON.stringify("Language of the movie: " + response.data.Language));
             console.log(JSON.stringify("Actors in the movie: " + response.data.Actors));
-            console.log(response.data.Ratings);
+            //console.log(response.data.Ratings);
         })
         .catch(function (error) {
             if (error.response) {
@@ -66,7 +68,7 @@ function movies(input) {
         });
 
 
-}
+};
 
 
 function concert(input) {
@@ -99,12 +101,19 @@ function concert(input) {
             console.log(error.config);
         });
 
-}
+};
 
 function random() {
+    fs.readFile("random.txt", "utf8", function (err, data) {
+        if (err) {
+            return console.log(err)
+        }
+        var dataArr = data.split(",")
+        var userCall1 = dataArr[0];
+        var userCall2 = dataArr[1];
+        (userCall1[0], userCall2[1]);
 
-
-
+    });
 }
 
 switch (userCall) {
@@ -113,19 +122,15 @@ switch (userCall) {
         song(userInput)
         break
 
-
     case "movie-this":
         movies(userInput)
         break
-
-
-    case "do-what-it-says":
-        random(userInput)
-        break
-
 
     case "concert-this":
         concert(userInput)
         break
 
+    case "do-what-it-says":
+        random()
+        break
 }
