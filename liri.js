@@ -72,7 +72,13 @@ function movies(input) {
 function concert(input) {
     axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(
         function (response) {
-            console.log("The movie's rating is: " + response.data.imdbRating);
+            for (let i = 0; i < response.data.length; i++) {
+                console.log("Name of venue: ", response.data[i].venue.name);
+                console.log("Venue location: ", response.data[i].venue.city);
+                //console.log(response.data);
+                var date = (response.data[i].datetime);
+                console.log(moment(date).format("MM/DD/YY hh:mm:ss"));
+            }
         })
         .catch(function (error) {
             if (error.response) {
@@ -121,8 +127,5 @@ switch (userCall) {
     case "concert-this":
         concert(userInput)
         break
-
-
-
 
 }
