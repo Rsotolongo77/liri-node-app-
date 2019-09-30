@@ -52,4 +52,6 @@
 ![ ](images/random.png)
 ![ ](images/concert.png)
 
+![ ](images/movie.png)
+![ ](images/random4.png)
 
