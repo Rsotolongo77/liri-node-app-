@@ -30,8 +30,10 @@
       * Language of the movie.
       * Plot of the movie.
       * Actors in the movie.
-      
-      
+     
+![ ](images/random2.png)
+
+
 ### concert-this :
 1.  For this command input at process.argv[2], a funtion is triggered that runs the axios package on node js for the bandsintown API .
 2. The command input at process.argv[3] takes in the parameter that brings in the artist name as the input for the axios call.
