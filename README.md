@@ -49,4 +49,7 @@
 1.  For this command input at process.argv[2], a funtion is triggered that uses the fs package in node js. It reads the file called random.txt and turns the strings into an array. Then it uses item at index [0] as the user input referencing the spotify-this-song, movie-this, or concert-this function accordingly. 
 2. The array item at index[1] is then replaced as the input point for the search of  each respective API call. For example, If spotify-this-song is listed at the index[0] of the array created from the read me file; then song name will be inserted as the input for the search parameter of the API call. 
 
+![ ](images/random.png)
+![ ](images/concert.png)
+
 
