@@ -15,7 +15,7 @@
 2. The command input at process.argv[3] takes in the parameter that brings in the song name as the input for the API call. 
 3. The returning results are the artists and albums listing that song in the spotify database. 
 
-![ ](images/spotify.png)
+![ ](images/random3.png)
 
 
 ### movie-this:
