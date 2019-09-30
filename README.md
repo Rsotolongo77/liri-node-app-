@@ -41,6 +41,8 @@
     * Name of the venue
     * Venue location
     * Date of the Event (use moment to format this as "MM/DD/YYYY")
+
+![ ](images/random1.png)
     
     
 ### do-what-it-says :
