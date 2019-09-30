@@ -15,6 +15,8 @@
 2. The command input at process.argv[3] takes in the parameter that brings in the song name as the input for the API call. 
 3. The returning results are the artists and albums listing that song in the spotify database. 
 
+(images/spotify.png)
+
 
 ### movie-this:
 1. For this command input at process.argv[2], a funtion is triggered that runs the axios package on node js for OMDB API .
