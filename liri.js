@@ -17,10 +17,10 @@ function song(input) {
         .search({ type: 'track', query: input })
         .then(function (response) {
             for (i = 0; i < response.tracks.items.length; i++) {
-                console.log(JSON.stringify("\nArtist: \n" + response.tracks.items[i].album.artists[0].name, null, 2));
-                console.log(JSON.stringify("\nSong name: \n" + response.tracks.items[i].name, null, 2));
-                console.log(JSON.stringify("\nAlbum that the song is from: \n" + response.tracks.items[i].album.name, null, 2));
-                console.log(JSON.stringify("\nPreview of the song: \n" + response.tracks.items[i].preview_url, null, 2));
+                console.log(JSON.stringify("Artist: " + response.tracks.items[i].album.artists[0].name, null, 2));
+                console.log(JSON.stringify("Song name: " + response.tracks.items[i].name, null, 2));
+                console.log(JSON.stringify("Album that the song is from: " + response.tracks.items[i].album.name, null, 2));
+                console.log(JSON.stringify("Preview of the song: " + response.tracks.items[i].preview_url, null, 2));
                 console.log("---------------");
                 console.log("---------------");
                 console.log("---------------");
@@ -40,13 +40,14 @@ function movies(input) {
     axios.get("http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=trilogy").then(
         function (response) {
 
-            console.log(JSON.stringify("\nTitle: \n" + response.data.Title));
-            console.log(JSON.stringify("\nYear Released: \n" + response.data.Year));
-            console.log(JSON.stringify("\nIMDB Rating: \n" + response.data.imdbRating));
-            console.log(JSON.stringify("\nRotten Tomatoes Rating: \n" + response.data.Ratings[1].Value));
-            console.log(JSON.stringify("\nCountry where the movie was produced: \n" + response.data.Country));
-            console.log(JSON.stringify("\nLanguage of the movie: \n" + response.data.Language));
-            console.log(JSON.stringify("\nActors in the movie: \n" + response.data.Actors));
+            console.log(JSON.stringify("Title: " + response.data.Title));
+            console.log(JSON.stringify("Year Released: " + response.data.Year));
+            console.log(JSON.stringify("IMDB Rating: " + response.data.imdbRating));
+            console.log(JSON.stringify("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value));
+            console.log(JSON.stringify("Country where the movie was produced: " + response.data.Country));
+            console.log(JSON.stringify("Language of the movie: " + response.data.Language));
+            console.log(JSON.stringify("Plot of the movie: " + response.data.Plot));
+            console.log(JSON.stringify("Actors in the movie: " + response.data.Actors));
             console.log("---------------");
             console.log("---------------");
             console.log("---------------");
@@ -79,10 +80,10 @@ function concert(input) {
     axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(
         function (response) {
             for (i = 0; i < response.data.length; i++) {
-                console.log("\nName of venue: \n", response.data[i].venue.name);
-                console.log("\nVenue location: \n", response.data[i].venue.city);
+                console.log("Name of venue: ", response.data[i].venue.name);
+                console.log("Venue location: ", response.data[i].venue.city);
                 var date = (response.data[i].datetime);
-                console.log(moment(date).format("\nMM/DD/YY hh:mm:ss\n"));
+                console.log(moment(date).format("MM/DD/YY hh:mm:ss"));
                 console.log("---------------");
                 console.log("---------------");
                 console.log("---------------");
@@ -126,7 +127,6 @@ function random() {
         }
         if (userCall0 === "concert-this") {
             concert(userCall1);
-            console.log(userCall0, userCall1);
         }
     });
 
