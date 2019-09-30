@@ -1,6 +1,6 @@
 # LIRI-node js-app
 
-## LIRI is a node js app that makes API calls, and returns the relevant data from the users command line inputs. 
+## LIRI is a node js app that makes API calls, and returns the relevant data from the users command line inputs. The app is useful in that it get's information on songs, movies, and current concerts available for a particular artist. 
 
 ### Technologies used:
 * node js
