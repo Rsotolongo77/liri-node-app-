@@ -1,3 +1,4 @@
+//require modules and global variables established
 require("dotenv").config();
 
 var keys = require("./keys.js");
@@ -8,7 +9,7 @@ var moment = require("moment");
 var fs = require("fs");
 var userCall = process.argv[2];
 var userInput = process.argv.slice(3).join(" ");
-
+//spotify song search function
 function song(input) {
     if (input == undefined) {
         input = "The Sign by Ace of Base"
@@ -32,7 +33,7 @@ function song(input) {
         });
 
 };
-
+//omdb movie search function
 function movies(input) {
     if (input == undefined) {
         input = "Mr. Nobody"
@@ -75,7 +76,7 @@ function movies(input) {
 
 
 };
-
+//bandsintown search function
 function concert(input) {
     axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(
         function (response) {
@@ -109,7 +110,7 @@ function concert(input) {
         });
 
 };
-
+//random fucntion that pulls data from random.txt file via readFile fs package for node js
 function random() {
     fs.readFile("random.txt", "utf8", function (err, data) {
         if (err) {
@@ -131,7 +132,7 @@ function random() {
     });
 
 }
-
+//switch establishes which function to run from process.argv[2] position, function the establishes userinput to use for search parameter
 switch (userCall) {
 
     case "spotify-this-song":
