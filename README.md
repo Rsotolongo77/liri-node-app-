@@ -2,6 +2,11 @@
 
 ## LIRI is a node js app that makes API calls, and returns the relevant data from the users command line inputs. 
 
+### Technologies used:
+* node js
+* axios package
+* spotify API search package for node
+
 
 ### The four comand line inputs are :
 * spotify-this-song
