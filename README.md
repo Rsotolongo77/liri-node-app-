@@ -1,6 +1,11 @@
 # LIRI-node js-app
 
-## LIRI is a node js app that makes API calls, and returns the relevant data from the users command line inputs. 
+## LIRI is a node js app that makes API calls, and returns the relevant data from the users command line inputs. The app is useful by getting information for the user on songs, movies, and current concerts available for a particular artist. 
+
+### Technologies used:
+* node js
+* axios package
+* spotify API search package for node
 
 
 ### The four comand line inputs are :
@@ -15,7 +20,7 @@
 2. The command input at process.argv[3] takes in the parameter that brings in the song name as the input for the API call. 
 3. The returning results are the artists and albums listing that song in the spotify database. 
 
-![ ](images/spotify.png)
+![ ](images/random3.png)
 
 
 ### movie-this:
@@ -30,8 +35,10 @@
       * Language of the movie.
       * Plot of the movie.
       * Actors in the movie.
-      
-      
+     
+![ ](images/random2.png)
+
+
 ### concert-this :
 1.  For this command input at process.argv[2], a funtion is triggered that runs the axios package on node js for the bandsintown API .
 2. The command input at process.argv[3] takes in the parameter that brings in the artist name as the input for the axios call.
@@ -39,10 +46,18 @@
     * Name of the venue
     * Venue location
     * Date of the Event (use moment to format this as "MM/DD/YYYY")
+
+![ ](images/random1.png)
     
     
 ### do-what-it-says :
 1.  For this command input at process.argv[2], a funtion is triggered that uses the fs package in node js. It reads the file called random.txt and turns the strings into an array. Then it uses item at index [0] as the user input referencing the spotify-this-song, movie-this, or concert-this function accordingly. 
 2. The array item at index[1] is then replaced as the input point for the search of  each respective API call. For example, If spotify-this-song is listed at the index[0] of the array created from the read me file; then song name will be inserted as the input for the search parameter of the API call. 
 
+![ ](images/random.png)
+![ ](images/concert.png)
 
+![ ](images/movie.png)
+![ ](images/random4.png)
+
+Developer - Ricardo Sotolongo
