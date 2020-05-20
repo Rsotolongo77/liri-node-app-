@@ -18,6 +18,7 @@ function song(input) {
         .search({ type: 'track', query: input })
         .then(function (response) {
             for (i = 0; i < response.tracks.items.length; i++) {
+
                 console.log(JSON.stringify("Artist: " + response.tracks.items[i].album.artists[0].name, null, 2));
                 console.log(JSON.stringify("Song name: " + response.tracks.items[i].name, null, 2));
                 console.log(JSON.stringify("Album that the song is from: " + response.tracks.items[i].album.name, null, 2));
@@ -40,7 +41,7 @@ function movies(input) {
     }
     axios.get("http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=trilogy").then(
         function (response) {
-
+            console.log(response.data);
             console.log(JSON.stringify("Title: " + response.data.Title));
             console.log(JSON.stringify("Year Released: " + response.data.Year));
             console.log(JSON.stringify("IMDB Rating: " + response.data.imdbRating));
@@ -114,7 +115,7 @@ function concert(input) {
 function random() {
     fs.readFile("random.txt", "utf8", function (err, data) {
         if (err) {
-            return console.log(err)
+            returconsole.log(err)
         }
         var dataArr = data.split(",")
         var userCall0 = dataArr[0];
